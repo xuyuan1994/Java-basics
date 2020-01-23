@@ -1,11 +1,30 @@
 import java.util.Scanner;  
 //These code are for the bank account class 
-public class Bank_account{
-    int account_number=123456789;
-    double balance=50.0;
-    String customer_name="Rex";
-    String email="yuanx5@gmail.com";
-    int phone_number=818263213;
+public class Account{
+
+    private int account_number;
+    private double balance;
+    private String customer_name;
+    private String email;
+    private int phone_number;
+    private int ssn;
+
+    public Account(){
+        account_number=123456789;
+        balance=50.0;
+        customer_name="Rex";
+        email="yuanx5@gmail.com";
+        phone_number=818263213;
+        ssn=123456789;
+    }
+    public Account(int account_number,double balance,String customer_name,String email,int phone_number,int ssn){
+        this.account_number=account_number;
+        this.balance=balance;
+        this.customer_name=customer_name;
+        this.email=email;
+        this.phone_number=phone_number;
+        this.ssn=ssn;
+    }
     Scanner scanner = new Scanner(System.in);
     public void deposit(double amount){
         balance+=amount;
@@ -32,14 +51,19 @@ public class Bank_account{
         System.out.println("The user's phone_number is "+phone_number);
 
     }
+    //This function prints out the balance of the user
+    public void showbalance(){
+        System.out.println(balance);
+    }
     //It repeats the steps for user until he/she decides to exit 
     public String repeat(){
-        System.out.println("Please enter one of the following commands: withdraw, deposit, get info or exit " );
+        System.out.println("Please enter one of the following commands: withdraw, deposit, info or exit " );
         String command=scanner.next();
         return command;
     }
+    
     //This is the function that decides what actions need to be done depending on the user's command
-    public void whichcommand(String command, Bank_account account ){
+    public void whichcommand(String command, Account account ){
         while (!command.equals("exit")){
             if (command.equals("withdraw"))
             {
@@ -58,7 +82,7 @@ public class Bank_account{
                 command=account.repeat();
                 
             }
-            else if (command.equals("get info"))
+            else if (command.equals("info"))
             {   
                 System.out.println("Here are your info");
                 account.printinfo();
@@ -75,14 +99,50 @@ public class Bank_account{
 
 
     }
-    public static void main (String[] args){
-        //The class uses the whichcommand method to guide the user to select a certain command and then decides what to do with the command
-        Bank_account rex_account=new Bank_account();
-        System.out.println("please enter one of the following commands: withdraw, deposit, get info or exit " );
-        Scanner scanner2 = new Scanner(System.in);
-        String command =scanner2.next();
-        rex_account.whichcommand(command, rex_account);
+    
+	public int getAccount_number() {
+		return account_number;
+	}
+	public void setAccount_number(int account_number) {
+		this.account_number = account_number;
+	}
+	public double getBalance() {
+		return balance;
+	}
+	public void setBalance(double balance) {
+		this.balance = balance;
+	}
+	public String getCustomer_name() {
+		return customer_name;
+	}
+	public void setCustomer_name(String customer_name) {
+		this.customer_name = customer_name;
+	}
+	public String getEmail() {
+		return email;
+	}
+	public void setEmail(String email) {
+		this.email = email;
+	}
+	public int getPhone_number() {
+		return phone_number;
+	}
+	public void setPhone_number(int phone_number) {
+		this.phone_number = phone_number;
+	}
+	public Scanner getScanner() {
+		return scanner;
+	}
+	public void setScanner(Scanner scanner) {
+		this.scanner = scanner;
+	}
 
+    public int getSsn() {
+        return ssn;
+    }
+
+    public void setSsn(int ssn) {
+        this.ssn = ssn;
     }
 };
 
